@@ -30,9 +30,6 @@ def test_dark_theme_by_time_and_user_choice():
     # TODO переключите темную тему в зависимости от времени суток,
     #  но учтите что темная тема может быть включена вручную
 
-    #if current_time.hour >= 22 or current_time.hour < 6:
-     #   is_dark_theme = True
-
     if dark_theme_enabled_by_user == True:
         is_dark_theme = True
     elif dark_theme_enabled_by_user == False:
@@ -66,7 +63,7 @@ def test_find_suitable_user():
     assert suitable_users == {"name": "Olga", "age": 45}
 
     # TODO найдите всех пользователей младше 20 лет
-    #suitable_users = None
+
     suitable_users = []
     for user in users:
         if user['age'] < 20:
@@ -76,6 +73,7 @@ def test_find_suitable_user():
         {"name": "Stanislav", "age": 15},
         {"name": "Maria", "age": 18},
     ])
+
 
 # Сделайте функцию, которая будет печатать
 # читаемое имя переданной ей функции и значений аргументов.
@@ -97,7 +95,11 @@ def print_readable_function(func, *args):
             args_list.append(arg_str)
         else:
             args_list.append(str(arg))
-    return f"{func_name.replace('_', ' ').title()} [{', '.join(args_list)}]"
+
+    readable_str = f"{func_name.replace('_', ' ').title()} [{', '.join(args_list)}]"
+    print(readable_str)
+    return readable_str
+
 
 def open_browser(browser_name):
     actual_result = print_readable_function(open_browser, browser_name)
@@ -121,4 +123,3 @@ def test_readable_function():
     open_browser(browser_name="Chrome")
     go_to_companyname_homepage(page_url="https://companyname.com")
     find_registration_button_on_login_page(page_url="https://companyname.com/login", button_text="Register")
-
